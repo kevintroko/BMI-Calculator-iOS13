@@ -15,10 +15,11 @@ class CalculateViewController: UIViewController {
     @IBOutlet weak var weightSlider: UISlider!
     @IBOutlet weak var weightLabel: UILabel!
     
+    var calculatorBrain = CalculatorBrain();
+    
+    
     override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        
+        super.viewDidLoad();
     }
 
 
@@ -34,16 +35,18 @@ class CalculateViewController: UIViewController {
     }
     
     @IBAction func calculatePressed(_ sender: Any) {
-        let height = heightSlider.value;
-        let weight = weightSlider.value;
-        
-        let bmi = weight / pow(height, 2.0);
-        print(bmi);
-        
-        let secondVC = ResultsViewController();
-        secondVC.bmiLabel.text = String(format: "%.1f", bmi);
-        
-        self.present(secondVC, animated: true, completion: nil);
+        calculatorBrain.calculateBMI(height: heightSlider.value, weight: weightSlider.value);
+        self.performSegue(withIdentifier: "goToResult", sender: self);
+    }
+    
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+        if (segue.identifier == "goToResult") {
+            let destinationVC = segue.destination as! ResultsViewController;
+            destinationVC.bmiValue = calculatorBrain.bmi;
+        }
     }
 }
 
