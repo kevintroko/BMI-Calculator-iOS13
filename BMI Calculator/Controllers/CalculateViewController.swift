@@ -45,7 +45,10 @@ class CalculateViewController: UIViewController {
         // Pass the selected object to the new view controller.
         if (segue.identifier == "goToResult") {
             let destinationVC = segue.destination as! ResultsViewController;
-            destinationVC.bmiValue = calculatorBrain.bmi;
+            destinationVC.bmiValue = calculatorBrain.getBMIValue();
+            destinationVC.bmiAdvice = calculatorBrain.getAdvice();
+            destinationVC.bmiColor = calculatorBrain.getColor();
+            
         }
     }
 }

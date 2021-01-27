@@ -209,6 +209,7 @@
                     </view>
                     <connections>
                         <outlet property="adviceLabel" destination="9IV-CT-mxw" id="7fu-rd-UXk"/>
+                        <outlet property="backgroundView" destination="r83-N3-Ash" id="yA4-zL-fbm"/>
                         <outlet property="bmiLabel" destination="VU9-2W-Sd5" id="8JU-CI-7ip"/>
                         <outlet property="recalculatePressed" destination="CO5-IF-rJM" id="kxo-sK-7An"/>
                     </connections>
